@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp10
+namespace WpfApp7
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -25,21 +25,37 @@ namespace WpfApp10
             InitializeComponent();
         }
         private void
-           CalculateButton_Click(object sender, RoutedEventArgs e)
+            PerformOperationButton_Click(object sender, RoutedEventArgs e)
         {
-            int N = Int32.Parse(numberTextBox.Text);
-            int exponent = FindExponent(N);
-            resultTextBox.Text = exponent.ToString();
+            int.operationNumber = Int32.Parse(operationNumberTextBox.Text);
+            double numberA = Double.Parse(numberTextBox.Text);
+            double numberB = double.Parse(numberTextBox.Text);
+            Double result = PerformOperation(operationNumber, numberA, numberB);
+            resultTextBox.Text = result.ToString();
         }
-        private int FindExponent(int N);
+        private double
+            PerformOperation(int operationNumber, double numberA, double numberB)
         {
-        int k = 0;
-        while = (N > 1);
+            double result = 0.0;
+            switch (operationNumber)
             {
-            N = N / 2;
-            k++;
+                case 1:
+                    result = numberA + numberB;
+                    break;
+                case 2:
+                    result = numberA - numberB;
+                    break;
+                case 3:
+                    result = numberA * numberB;
+                    break;
+                case 4:
+                    result = numberA / numberB;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Operation number");
+                    break;
             }
-        return K;
+            return result;
         }
     }
 }
